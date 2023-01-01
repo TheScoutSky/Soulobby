@@ -1,0 +1,9 @@
+name: Soulobby
+version: '${version}'
+main: de.theskyscout.soulobby.Soulobby
+api-version: 1.19
+authors: [ TheSkyScout ]
+description: Lobby System for SoulSMP and ChainSMP
+commands:
+  soulobby:
+
