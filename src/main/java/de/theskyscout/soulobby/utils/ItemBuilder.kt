@@ -37,6 +37,11 @@ class ItemBuilder(material: Material) {
         lore.add(mm.deserialize(text))
         return this
     }
+    fun editLore(line:Int, text: String):ItemBuilder {
+        lore.removeAt(line - 1)
+        lore.add(line-1, mm.deserialize(text))
+        return this
+    }
     fun setInvisibleEnchant(boolean: Boolean):ItemBuilder {
         if(boolean) {
             this.itemMeta.addEnchant(Enchantment.CHANNELING, 1, true);
