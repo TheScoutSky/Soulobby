@@ -2,6 +2,7 @@ package de.theskyscout.soulobby.listeners.items
 
 import de.theskyscout.soulobby.listeners.perks.FlyPerk
 import de.theskyscout.soulobby.listeners.perks.GlowPerk
+import de.theskyscout.soulobby.listeners.perks.NamePerk
 import de.theskyscout.soulobby.utils.ItemBuilder
 import de.theskyscout.soulobby.utils.StartInventory
 import net.kyori.adventure.text.minimessage.MiniMessage
@@ -39,6 +40,7 @@ object PerksItem:Listener {
         }
         if(player.allowFlight) {FLY_PERK_ITEM.editLore(3, "<green>Enabled")}else{FLY_PERK_ITEM.editLore(3, "<red>Disabled")}
         if(player.isGlowing) {GLOW_PERK_ITEM.editLore(3, "<green>Enabled")}else{GLOW_PERK_ITEM.editLore(3, "<red>Disabled")}
+        if(NamePerk.players.contains(player)) {NAME_PERK_ITEM.editLore(3, "<green>Enabled")}else{NAME_PERK_ITEM.editLore(3, "<red>Disabled")}
         inventory.setItem(10, FLY_PERK_ITEM.toItemStack())
         inventory.setItem(11, GLOW_PERK_ITEM.toItemStack())
         inventory.setItem(12, NAME_PERK_ITEM.toItemStack())
@@ -65,9 +67,10 @@ object PerksItem:Listener {
                         GlowPerk.setGlowColorInventory(player)
                     }
                 }
+                NAME_PERK_ITEM.material -> NamePerk.changeNameInfo(player)
 
                 else -> {return}
             }
-            event.isCancelled = true
+        event.isCancelled = true
     }
 }

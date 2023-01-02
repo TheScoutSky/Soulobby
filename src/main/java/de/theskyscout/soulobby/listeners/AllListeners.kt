@@ -4,6 +4,7 @@ import de.theskyscout.soulobby.Soulobby
 import de.theskyscout.soulobby.listeners.items.PerksItem
 import de.theskyscout.soulobby.listeners.items.SichtbarkeitsItem
 import de.theskyscout.soulobby.listeners.perks.GlowPerk
+import de.theskyscout.soulobby.listeners.perks.NamePerk
 import de.theskyscout.soulobby.utils.StartInventory
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
@@ -23,6 +24,7 @@ class AllListeners(): Listener {
         manager.registerEvents(PerksItem, Soulobby.plugin)
         manager.registerEvents(FreezingItems, Soulobby.plugin)
         manager.registerEvents(GlowPerk, Soulobby.plugin)
+        manager.registerEvents(NamePerk, Soulobby.plugin)
     }
 
     @EventHandler

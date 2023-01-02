@@ -27,7 +27,7 @@ object GlowPerk: Listener {
             player.playSound(player, Sound.BLOCK_ANVIL_BREAK, 10F, 0F)
         } else {
             player.isGlowing = true
-            PerksItem.GLOW_PERK_ITEM.editLore(3, "<green>Enabled")
+             PerksItem.GLOW_PERK_ITEM.editLore(3, "<green>Enabled")
             player.sendMessage(FlyPerk.mm.deserialize("${Config.prefix()} <gray>Du hast den GlowPerk <green>aktiviert"))
             player.playSound(player, Sound.ENTITY_PLAYER_LEVELUP, 10F, 0F)
 

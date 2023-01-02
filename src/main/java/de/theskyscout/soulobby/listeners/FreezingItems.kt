@@ -21,10 +21,10 @@ object FreezingItems: Listener {
            event.isCancelled = true
         }
     }
-    @EventHandler
-    fun onClick(event: InventoryClickEvent) {
+   @EventHandler
+   fun onClick(event: InventoryClickEvent) {
         if(freezedItems.contains(event.currentItem)) {
-            event.isCancelled = true
+           event.isCancelled = true
         }
     }
 
@@ -37,7 +37,7 @@ object FreezingItems: Listener {
 
     @EventHandler
     fun onItemMoveOffHand(event: PlayerSwapHandItemsEvent) {
-        if(freezedItems.contains(event.offHandItem)) {
+        if (freezedItems.contains(event.offHandItem)) {
             event.isCancelled = true
         }
     }
