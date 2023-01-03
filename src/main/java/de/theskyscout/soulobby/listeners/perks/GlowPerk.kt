@@ -3,9 +3,12 @@ package de.theskyscout.soulobby.listeners.perks
 import de.theskyscout.soulobby.config.Config
 import de.theskyscout.soulobby.listeners.items.PerksItem
 import de.theskyscout.soulobby.utils.ItemBuilder
+import de.theskyscout.soulobby.utils.NMShandler
 import de.theskyscout.soulobby.utils.StartInventory
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.minecraft.network.protocol.game.ClientboundSetPlayerTeamPacket
+import net.minecraft.world.scores.PlayerTeam
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -14,6 +17,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.scoreboard.Scoreboard
 
 object GlowPerk: Listener {
 
@@ -42,7 +46,8 @@ object GlowPerk: Listener {
             val team = scoreboard.getTeam("$color.team")
             if(team == null) scoreboard.registerNewTeam("$color.team")
             team?.color(color)
-            team?.addEntity(player)
+            val playerTeam = PlayerTeam(scoreboard as Scoreboard, "$color.team")
+            NMShandler.sendPacket(player, ClientboundSetPlayerTeamPacket.createPlayerPacket())
             player.sendMessage(mm.deserialize("${Config.prefix()} Du leuchtest nun in der Farbe: <${color}>${color.toString().capitalize()}"))
             player.isGlowing=true
         } else {

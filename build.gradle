@@ -7,15 +7,19 @@ plugins {
 application {
     mainClass.set("de.theskyscout.soulobby.Soulobby")
 }
-
 group = 'de.theskyscout'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven {
         name = 'papermc-repo'
         url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
     }
     maven {
         name = 'sonatype'
@@ -27,6 +31,7 @@ dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "commons-io:commons-io:2.11.0"
+    compileOnly 'org.spigotmc:spigot:1.19.3-R0.1-SNAPSHOT:remapped-mojang'
 }
 
 ktor {

@@ -3,6 +3,7 @@ package de.theskyscout.soulobby
 import de.theskyscout.soulobby.commands.LobbyCommand
 import de.theskyscout.soulobby.config.Config
 import de.theskyscout.soulobby.listeners.AllListeners
+import de.theskyscout.soulobby.listeners.perks.NamePerk
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
